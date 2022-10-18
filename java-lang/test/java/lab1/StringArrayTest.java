@@ -3,12 +3,12 @@ package lab1;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class LessThanAverageTest {
+public class StringArrayTest {
     @Test
     void testEmptyArr() {
         String[] emptyArr = new String[]{};
 
-        String[] got = LessThanAverage.stringArr(emptyArr);
+        String[] got = StringArray.lessThanAverage(emptyArr);
 
         assertThat(got).isNotNull();
         assertThat(got).isEmpty();
@@ -31,7 +31,7 @@ public class LessThanAverageTest {
         };
 
         for (int i = 0; i < inputArrays.length; i++) {
-            String[] got = LessThanAverage.stringArr(inputArrays[i]);
+            String[] got = StringArray.lessThanAverage(inputArrays[i]);
             assertThat(got).isEqualTo(expectedArrays[i]);
         }
     }

@@ -2,8 +2,8 @@ package lab1;
 
 import java.util.ArrayList;
 
-public class LessThanAverage {
-    public static String[] stringArr(String[] words) {
+public class StringArray {
+    public static String[] lessThanAverage(String[] words) {
         double sumSymbols = 0;
         ArrayList<String> filteredWords = new ArrayList<>();
 
