@@ -5,18 +5,26 @@ public class Lab1Test {
     @Test
     void testExceptions() {
         int count = 0;
+        String divByZero = "Division by 0!";
 
        try {
             Lab1.MyMathExpression(5,5,0,5);
         } catch (Exception e) {
-            assertThat(e.getMessage()).isEqualTo("Division by 0!");
+            assertThat(e.getMessage()).isEqualTo(divByZero);
             count++;
         }
 
         try {
             Lab1.MyMathExpression(-3, 5, 5, 5);
         } catch (Exception e) {
-            assertThat(e.getMessage()).isEqualTo("Division by 0!");
+            assertThat(e.getMessage()).isEqualTo(divByZero);
+            count++;
+        }
+
+        try {
+            Lab1.MyMathExpression(1, 5, 5, 5);
+        } catch (Exception e) {
+            assertThat(e.getMessage()).isEqualTo(divByZero);
             count++;
         }
 
@@ -27,12 +35,12 @@ public class Lab1Test {
             count++;
         }
 
-        assertThat(count).isEqualTo(3);
+        assertThat(count).isEqualTo(4);
     }
 
     @Test
     void testExpression() {
-        assertThat(Lab1.MyMathExpression(2,2,1,1)).isEqualTo(2d);
+        assertThat(Lab1.MyMathExpression(2,2,1,1)).isEqualTo(2);
         assertThat(Lab1.MyMathExpression(-4, -3, 1,1)).isEqualTo(1.55);
         assertThat(Lab1.MyMathExpression(2, 2, -2,-1)).isEqualTo(-3);
     }

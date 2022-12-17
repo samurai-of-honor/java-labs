@@ -1,27 +1,28 @@
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Lab3Test {
     @Test
     void testEmptyString() {
-      String inputStr = "";
-      StringBuffer input = new StringBuffer(inputStr);
-      String expected = "[]";
+        String inputStr = "";
+        StringBuffer input = new StringBuffer(inputStr);
+        String expected = "[]";
 
-      StringBuffer actual = Lab3.sortBySymbolCount(input, ' ');
+        StringBuffer actual = Lab3.sortBySymbolCount(input, ' ');
 
-      assertThat(actual.toString()).isEqualTo(expected);
+        assertThat(actual.toString()).isEqualTo(expected);
     }
 
     @Test
     void testOneWord() {
-      String inputStr = "word";
-      StringBuffer input = new StringBuffer(inputStr);
-      String expected = "[word]";
+        String inputStr = "word";
+        StringBuffer input = new StringBuffer(inputStr);
+        String expected = "[word]";
 
-      StringBuffer actual = Lab3.sortBySymbolCount(input, 'o');
+        StringBuffer actual = Lab3.sortBySymbolCount(input, 'o');
 
-      assertThat(actual.toString()).isEqualTo(expected);
+        assertThat(actual.toString()).isEqualTo(expected);
     }
 
     @Test

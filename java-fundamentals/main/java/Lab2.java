@@ -1,10 +1,12 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
+// FEATURES: remove extra zeros after transposition
 public class Lab2 {
     public static void printMatrix(double[][] m) {
         for (double[] row : m) {
             for (double cell : row) {
-                System.out.printf("%.2f  ", cell);
+                System.out.printf("%.1f  ", cell);
             }
             System.out.print("\n");
         }
@@ -20,11 +22,11 @@ public class Lab2 {
         }
 
         // Fill matrix to the maximum length with zeros
-        ArrayList<double[]> tempM = new ArrayList<>(java.util.Arrays.asList(m));
+        ArrayList<double[]> tempM = new ArrayList<>(Arrays.asList(m));
         for (int i = 0; i < tempM.size(); i++) {
             double[] row = tempM.get(i);
             if (row.length < maxLength) {
-                tempM.set(i, java.util.Arrays.copyOf(row, maxLength));
+                tempM.set(i, Arrays.copyOf(row, maxLength));
             }
         }
 
@@ -38,8 +40,8 @@ public class Lab2 {
 
         // Checking the number of elements in each row
         int firstRowLength = m[0].length;
-        for (double[] row : m) {
-            if (row.length != firstRowLength) {
+        for (int i = 1; i < m.length; i++) {
+            if (m[i].length != firstRowLength) {
                 m = fillMatrix(m);
                 break;
             }
@@ -67,15 +69,14 @@ public class Lab2 {
             for (int j = 1; j < m[i].length; j++) {
                 double curr = m[i][j];
 
-                if ((i+1) % 2 == 0 && curr > n) {
+                if ((i + 1) % 2 == 0 && curr > n) {
                     n = curr;
                 }
 
-                if ((i+1) % 2 == 1 && curr < n) {
+                if ((i + 1) % 2 == 1 && curr < n) {
                     n = curr;
                 }
             }
-
             sum += n;
         }
 
@@ -84,10 +85,10 @@ public class Lab2 {
 
     public static void main(String[] args) {
         double[][] testM = {
-                {1,2,3},
-                {4,5},
-                {6,7,8,9},
-                {10},
+                {1.1, 2, 3},
+                {4, 5.5},
+                {6, 7, 8, 9},
+                {10.9},
         };
 
         System.out.println("Start matrix:");

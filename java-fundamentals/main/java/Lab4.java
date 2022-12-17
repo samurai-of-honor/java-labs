@@ -1,8 +1,10 @@
 /*
  * Copyright (c) 2022 Pavlo Baran
  */
+
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 
 
 /**
@@ -19,15 +21,16 @@ public class Lab4 {
      * @param args command-line arguments(ignored)
      */
     public static void main(String[] args) {
+        // Example ships array
         Ship[] warships = new Ship[]{
-            new Ship("Yamato", 1941, "Japan", 2500, 256),
-            new Ship("Enterprise", 1938, "USA", 2219, 246),
-            new Ship("Bismark", 1940, "Germany",2200, 241),
+                new Ship("Yamato", 1941, "Japan", 2500, 256),
+                new Ship("Enterprise", 1938, "USA", 2219, 246),
+                new Ship("Bismark", 1940, "Germany", 2200, 241),
         };
 
         System.out.println("Sort the array by ship year in ascending order:");
         // Use lambda expression instead new Comparator
-        Arrays.sort(warships, (o1, o2) -> o1.getYear() - o2.getYear());
+        Arrays.sort(warships, Comparator.comparingInt(Ship::getYear));
         for (Ship ship : warships) {
             System.out.println("~~~~~~~~~~~~~~~~\n" + ship);
         }
@@ -51,25 +54,35 @@ public class Lab4 {
  * @author Pavlo Baran
  */
 class Ship implements Comparable<Ship> {
-    /** official ship name */
+    /**
+     * Official ship name
+     */
     private final String name;
-    /** year of commissioning */
+    /**
+     * Year of commissioning
+     */
     private final int year;
-    /** country of origin */
+    /**
+     * Country of origin
+     */
     private final String country;
-    /** number of crew or passengers */
+    /**
+     * Number of crew or passengers
+     */
     private final int crew;
-    /** full ship length */
+    /**
+     * Full ship length
+     */
     private final int length;
 
     /**
      * Constructor for creating a new ship
      *
-     * @param name official ship name
-     * @param year year of commissioning
+     * @param name    official ship name
+     * @param year    year of commissioning
      * @param country country of origin
-     * @param crew number of crew or passengers
-     * @param length full ship length
+     * @param crew    number of crew or passengers
+     * @param length  full ship length
      */
     public Ship(String name, int year, String country, int crew, int length) {
         this.name = name;
@@ -93,7 +106,7 @@ class Ship implements Comparable<Ship> {
      *
      * @param ship another ship for comparison
      * @return 0 if the ships name length are equal,
-     *         else returns the difference in length of ship names in integer
+     * else returns the difference in length of ship names in integer
      */
     @Override
     public int compareTo(Ship ship) {
