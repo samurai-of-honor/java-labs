@@ -1,14 +1,33 @@
 package lab3;
 
+import java.io.*;
+
 public class ShapeHandler {
+    public static void saveShapes(Shape[] shapes, String filePath) {
+        try (ObjectOutputStream ostream = new ObjectOutputStream(new FileOutputStream(filePath))) {
+            ostream.writeObject(shapes);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Shape[] loadShapes(String filePath) {
+        try (ObjectInputStream istream = new ObjectInputStream(new FileInputStream(filePath))) {
+            return (Shape[]) istream.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static Shape[] generateRandomShapes(int n) {
         String[] colors = {"red", "green", "blue", "yellow", "black", "white", "orange", "pink", "gray", "brown"};
         Shape[] shapes = new Shape[n];
 
         for (int i = 0; i < n; i++) {
-            String color = colors[(int)(Math.random() * colors.length)];
+            String color = colors[(int) (Math.random() * colors.length)];
 
-            switch ((int)(Math.random() * 3)) {
+            switch ((int) (Math.random() * 3)) {
                 case 0 -> shapes[i] = new Circle(color, Math.random() * 10);
                 case 1 -> shapes[i] = new Rectangle(color, Math.random() * 10, Math.random() * 10);
                 case 2 -> shapes[i] = new Triangle(color, Math.random() * 10, Math.random() * 10);

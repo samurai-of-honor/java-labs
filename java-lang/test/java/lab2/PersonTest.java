@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import nl.jqno.equalsverifier.EqualsVerifier;
 
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PersonTest {
@@ -15,8 +16,8 @@ public class PersonTest {
     @Test
     void testEqualsAfterSerialization() {
         Gson gson = new Gson();
-        Person per1 = new Person("Студент",  19, "Гуртожиток 1");
-        Person per2 = new Person("Студент",  19, null);
+        Person per1 = new Person("Студент", 19, "Гуртожиток 1");
+        Person per2 = new Person("Студент", 19, null);
 
         String jsonPer1 = gson.toJson(per1);
         Person fromJsonPer1 = gson.fromJson(jsonPer1, Person.class);

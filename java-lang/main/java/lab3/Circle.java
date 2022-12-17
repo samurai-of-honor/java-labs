@@ -9,6 +9,6 @@ public class Circle extends Shape {
     }
 
     public double calcArea() {
-        return (radius*radius*Math.PI);
+        return (radius * radius * Math.PI);
     }
 }

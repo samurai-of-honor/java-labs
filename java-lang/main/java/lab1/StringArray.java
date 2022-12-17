@@ -7,13 +7,13 @@ public class StringArray {
         double sumSymbols = 0;
         ArrayList<String> filteredWords = new ArrayList<>();
 
-        for (String word: words) {
+        for (String word : words) {
             sumSymbols += word.length();
         }
 
         double avgLength = sumSymbols / words.length;
 
-        for (String word: words) {
+        for (String word : words) {
             if (word.length() < avgLength) {
                 filteredWords.add(word);
             }
