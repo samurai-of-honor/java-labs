@@ -17,10 +17,10 @@ public class StringArrayLambda {
         Supplier<ArrayList<String>> strList = ArrayList::new;
         ArrayList<String> filteredWords = strList.get();
 
-        BiPredicate<String, Integer> isLessOrEqual = (s, n) -> s.length() <= n;
+        BiPredicate<String, Integer> isLess = (s, n) -> s.length() <= n;
 
         Consumer<String> addIfLess = (word) -> {
-            if (isLessOrEqual.test(word, avgLength)) {
+            if (isLess.test(word, avgLength)) {
                 filteredWords.add(word);
             }
         };

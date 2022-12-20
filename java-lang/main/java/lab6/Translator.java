@@ -32,6 +32,7 @@ public class Translator {
 
         Scanner in = new Scanner(System.in);
         String str = in.nextLine();
+
         while (!str.equals("exit")) {
             String[] words = str.split(":");
             if (words.length != 2) {
