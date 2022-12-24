@@ -36,7 +36,7 @@ public class Lab6 {
         network.sortByPower();
         network.printAppliances();
 
-        List<ElectricalAppliances> foundAppliances = network.searchByPowerInterval(200, 400);
+        List<ElectricalAppliances> foundAppliances = network.searchByPowerInterval(400, 200);
         System.out.println("\nAppliances in 200w-400w interval:");
         for (ElectricalAppliances appliance : foundAppliances) {
             System.out.println(appliance);
@@ -95,9 +95,12 @@ class ElectricalNetwork {
         List<ElectricalAppliances> appliances = new ArrayList<>();
 
         if (minPower > maxPower) {
-            int temp = minPower;
-            minPower = maxPower;
-            maxPower = temp;
+            minPower += maxPower;
+            maxPower = minPower - maxPower;
+            minPower -= maxPower;
+//            int temp = minPower;
+//            minPower = maxPower;
+//            maxPower = temp;
         }
 
         for (ElectricalAppliances elAppliance : elAppliances) {
@@ -161,11 +164,13 @@ abstract class HomeAppliances extends ElectricalAppliances {
 }
 
 class WashingMachine extends HomeAppliances {
+    static final int WASHING_MACHINE_POWER = 2400;
     public WashingMachine() {
-        super(2400);
+        super(WASHING_MACHINE_POWER);
     }
 }
 
+// Magic number?
 class VacuumCleaner extends HomeAppliances {
     public VacuumCleaner() {
         super(350);
